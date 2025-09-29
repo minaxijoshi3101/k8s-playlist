@@ -1,0 +1,17 @@
+apiVersion: v1           
+kind: Pod                
+metadata:                
+  name: she-students     
+  labels:
+    app: she-students    
+spec:                    
+  containers:            
+    - name: main-container
+      image: nginx:latest      
+      ports:
+        - containerPort: 80    
+      volumeMounts:             
+        - name: she-volume
+          mountPath: /etc/
+    - name: sidecar-container
+      image: cyberark-secrets-provider-for-k8s

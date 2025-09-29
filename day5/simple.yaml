@@ -1,0 +1,14 @@
+# Simple YAML Example
+Employees:
+  - name: Tom
+    age: 30
+    married: true
+    skills:
+      - Python
+      - JavaScript
+  - name: Lucy
+    age: 25
+    married: false
+    skills:
+      - Java
+      - C++ 
