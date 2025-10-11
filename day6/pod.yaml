@@ -2,9 +2,12 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: seh-students
+  labels:
+    app: springboot
+    env: sit
 spec:
   containers:
   - name: seh-students
     image: minaxijoshi/seh-students:0.0.1-SNAPSHOT
     ports:
-    - containerPort: 80
+    - containerPort: 3000

@@ -1,0 +1,118 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","kind":"Pod","metadata":{"annotations":{},"labels":{"app":"springboot","env":"sit"},"name":"seh-students","namespace":"default"},"spec":{"containers":[{"image":"minaxijoshi/seh-students:0.0.1-SNAPSHOT","name":"seh-students","ports":[{"containerPort":3000}]}]}}
+  creationTimestamp: "2025-10-11T12:56:50Z"
+  generation: 1
+  labels:
+    app: springboot
+    env: sit
+  name: seh-students
+  namespace: default
+  resourceVersion: "5218084"
+  uid: 97426204-becc-439a-90cd-9215e3ea06ba
+spec:
+  containers:
+  - image: minaxijoshi/seh-students:0.0.1-SNAPSHOT
+    imagePullPolicy: IfNotPresent
+    name: seh-students
+    ports:
+    - containerPort: 3000
+      protocol: TCP
+    resources: {}
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-dnt69
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  nodeName: worker1
+  preemptionPolicy: PreemptLowerPriority
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: default
+  serviceAccountName: default
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - name: kube-api-access-dnt69
+    projected:
+      defaultMode: 420
+      sources:
+      - serviceAccountToken:
+          expirationSeconds: 3607
+          path: token
+      - configMap:
+          items:
+          - key: ca.crt
+            path: ca.crt
+          name: kube-root-ca.crt
+      - downwardAPI:
+          items:
+          - fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+            path: namespace
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2025-10-11T12:56:53Z"
+    status: "True"
+    type: PodReadyToStartContainers
+  - lastProbeTime: null
+    lastTransitionTime: "2025-10-11T12:56:50Z"
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2025-10-11T12:56:53Z"
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2025-10-11T12:56:53Z"
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2025-10-11T12:56:50Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: containerd://a583045be8e8507ecfe107bd0d992f651a9f58030a961c57d19f2245234b43db
+    image: docker.io/minaxijoshi/seh-students:0.0.1-SNAPSHOT
+    imageID: docker.io/minaxijoshi/seh-students@sha256:62105ff62a1fba155cd5b0ed9bca74fe4c71bf487de6f25f36861ff61609f7e0
+    lastState: {}
+    name: seh-students
+    ready: true
+    resources: {}
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2025-10-11T12:56:53Z"
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-dnt69
+      readOnly: true
+      recursiveReadOnly: Disabled
+  hostIP: 192.168.0.103
+  hostIPs:
+  - ip: 192.168.0.103
+  phase: Running
+  podIP: 10.244.1.90
+  podIPs:
+  - ip: 10.244.1.90
+  qosClass: BestEffort
+  startTime: "2025-10-11T12:56:50Z"
